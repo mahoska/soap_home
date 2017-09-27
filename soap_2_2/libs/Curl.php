@@ -60,16 +60,15 @@ class Curl
 
     public function getResponceInfo()
     {
-        $response1 = str_replace("<soap:Body>","",$this->response);      
-        $response2 = str_replace("</soap:Body>","",$response1); 
-        $response3=str_replace('diffgr:','',$response2);
-        $parser =simplexml_load_string($response3);
+       $response1 = str_replace("<soap:Body>","",$this->response);      
+       $response2 = str_replace("</soap:Body>","",$response1); 
+       $this->response = preg_replace("/(<\/?)(\w+):([^>]*>)/", "$1$2$3", $response2); 
+       $parser =simplexml_load_string($this->response);
         if (!$parser) {
            throw new Exception("Error download XML");
         }
 
-        //$this->dataSearch = $parser->TeamsResponse->TeamsResult ;
-       
+        $this->dataSearch = $parser->mTeamsResponse->mTeamsResult->mtTeamInfo ;
         return $this->dataSearch;
     }
    

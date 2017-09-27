@@ -19,10 +19,22 @@
                     </tr>
                      <?php foreach($teams as $team):?>
                         <tr>
-                            <td><?=$team->sName?> </td>
-                            <td><img src="<?=$team->sCountryFlag?>" alt='flag' class='img-responsive'/> </td>
-                            <td><a href="<?=$team->sWikipediaURL?>"><?=$team->sWikipediaURL?></a></td>
-                            <td><img src="<?=$team->sCountryFlagLarge?>" alt='flag' class='img-responsive' /></td>
+                            <td>
+                                <?=$team->msName?> 
+                            </td>
+                            <td>
+                                <img src="<?=$team->msCountryFlag?>" 
+                                     alt='flag' class='img-responsive'/>
+                            </td>
+                            <td>
+                                <a href="<?=$team->msWikipediaURL?>">
+                                    <?=$team->msWikipediaURL?>
+                                </a>
+                            </td>
+                            <td>
+                                <img src="<?=$team->msCountryFlagLarge?>"
+                                     alt='flag' class='img-responsive' />
+                            </td>
                         </tr>
                     <?php endforeach;?>
                 </table>
